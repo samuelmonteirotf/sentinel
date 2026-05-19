@@ -1,0 +1,16 @@
+{
+  "name": "sentinel",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Edge bot-firewall: real-time request scoring + adaptive rate limiting on Cloudflare Workers. No paid Bot Management — the heuristics are the product.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.90.0"
+  }
+}

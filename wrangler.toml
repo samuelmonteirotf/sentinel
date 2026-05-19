@@ -1,0 +1,34 @@
+name = "sentinel"
+main = "src/index.js"
+compatibility_date = "2026-05-19"
+workers_dev = true
+
+# Custom domain on the monteirotf.com zone (auto-provisions DNS + cert).
+routes = [
+  { pattern = "sentinel.monteirotf.com", custom_domain = true }
+]
+
+[observability]
+enabled = true
+
+# Per-client adaptive rate limiter + global stats hub.
+# SQLite-backed Durable Objects -> eligible on the Workers Free plan.
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+[[durable_objects.bindings]]
+name = "STATS"
+class_name = "Stats"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter", "Stats"]
+
+[vars]
+# Verdict thresholds (0-100). Tune without redeploying logic.
+SCORE_CHALLENGE = "30"
+SCORE_BLOCK = "60"
+# Sliding-window rate limit (requests per WINDOW_MS for a clean client).
+RL_WINDOW_MS = "10000"
+RL_BASE_LIMIT = "20"
