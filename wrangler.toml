@@ -25,10 +25,44 @@ class_name = "Stats"
 tag = "v1"
 new_sqlite_classes = ["RateLimiter", "Stats"]
 
+# All tunables. Defaults live in src/config.js; these override without a code
+# change. Strings only (Wrangler vars are strings); config.js parses them.
 [vars]
-# Verdict thresholds (0-100). Tune without redeploying logic.
+# Verdict thresholds (0-100).
 SCORE_CHALLENGE = "30"
 SCORE_BLOCK = "60"
-# Sliding-window rate limit (requests per WINDOW_MS for a clean client).
+
+# Scoring weights — points added per heuristic signal (see src/score.js).
+SCORE_NO_UA = "50"
+SCORE_BOT_UA = "65"
+SCORE_NO_ACCEPT = "20"
+SCORE_NO_ACCEPT_LANGUAGE = "12"
+SCORE_NO_ACCEPT_ENCODING = "10"
+SCORE_NO_SEC_CH_UA = "22"
+SCORE_NO_SEC_FETCH = "18"
+SCORE_HTTP1_BROWSER = "15"
+SCORE_OBSOLETE_TLS = "20"
+SCORE_DATACENTER_BROWSER = "28"
+SCORE_DATACENTER = "14"
+SCORE_THREAT_MAX = "25"
+# Chrome major version at/above which Client Hints + Sec-Fetch are expected.
+SCORE_CHROME_CH_MIN_VERSION = "90"
+# Minimum Cloudflare threatScore before it contributes.
+SCORE_THREAT_MIN = "10"
+
+# Adaptive sliding-window rate limit.
 RL_WINDOW_MS = "10000"
 RL_BASE_LIMIT = "20"
+# Max budget reduction for the most suspicious clients (0.85 -> down to 15%).
+RL_MAX_SUSPICION = "0.85"
+# Floor so even the worst clients keep a tiny budget.
+RL_MIN_LIMIT = "3"
+# Score scale used for the adaptive factor (score / scale).
+RL_SCORE_SCALE = "100"
+
+# Recent-decision ring buffer kept by the Stats Durable Object.
+STATS_MAX_EVENTS = "40"
+# How many "top reasons" the dashboard snapshot returns.
+STATS_MAX_REASONS = "6"
+# Max characters of User-Agent retained before logging/storage.
+STATS_UA_MAX_LEN = "80"
