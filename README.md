@@ -1,6 +1,6 @@
 # Sentinel
 
-**An enterprise-grade edge bot-firewall on Cloudflare Workers — designed for zero-trust traffic filtering and adaptive rate limiting.**
+**An enterprise-grade edge bot-firewall on Cloudflare Workers - designed for zero-trust traffic filtering and adaptive rate limiting.**
 
 Sentinel does not rely on third-party APIs or expensive enterprise licenses. It performs live request scoring directly at the edge, using low-level HTTP client-hints, TLS profiles, transport heuristics, and autonomous system (AS) routing telemetry available on the Cloudflare Free plan.
 
