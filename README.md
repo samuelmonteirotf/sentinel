@@ -6,7 +6,7 @@ Sentinel does not rely on third-party APIs or expensive enterprise licenses. It 
 
 ---
 
-## ⚡ Key Architecture & Features
+## Key Architecture and Features
 
 ```
              ┌────────────── Worker ──────────────┐
@@ -31,7 +31,7 @@ Sentinel does not rely on third-party APIs or expensive enterprise licenses. It 
 
 ---
 
-## ⚙️ Configuration Management
+## Configuration Management
 
 Sentinel is fully configurable. All 23 core weights, limits, and thresholds are externalized in `src/config.js` and read dynamically from environment variables defined in `wrangler.toml`:
 
@@ -49,7 +49,7 @@ Sentinel is fully configurable. All 23 core weights, limits, and thresholds are 
 
 ---
 
-## 🧪 Testing & Validation
+## Testing and Validation
 
 The codebase includes a comprehensive test suite utilizing **Vitest** for testing all pure routing, scoring, and rate-limiting logic:
 
@@ -63,7 +63,7 @@ npm run test
 
 ---
 
-## 🚀 CI/CD Pipeline
+## CI/CD Pipeline
 
 A GitHub Actions pipeline (`.github/workflows/ci.yml`) executes automatically on every push or pull request to the `main` branch, ensuring code safety:
 1.  **Security Scan**: Checks for dependency anomalies and lockfile validity.
@@ -72,7 +72,7 @@ A GitHub Actions pipeline (`.github/workflows/ci.yml`) executes automatically on
 
 ---
 
-## 🛠️ Deployment
+## Deployment
 
 Deploy to Cloudflare edge instantly:
 ```bash
@@ -82,6 +82,6 @@ wrangler deploy
 
 ---
 
-## 📄 License
+## License
 
 MIT
